@@ -16,10 +16,12 @@
     <None Remove="Context\" />
     <None Remove="Context\Entities\" />
     <None Remove="Repositories\" />
+    <None Remove="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Context\" />
     <Folder Include="Context\Entities\" />
     <Folder Include="Repositories\" />
+    <Folder Include="Interfaces\" />
   </ItemGroup>
 </Project>
