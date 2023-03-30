@@ -12,4 +12,14 @@
   <ItemGroup>
     <ProjectReference Include="..\orders.Domain\orders.Domain.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Context\" />
+    <None Remove="Context\Entities\" />
+    <None Remove="Repositories\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Context\" />
+    <Folder Include="Context\Entities\" />
+    <Folder Include="Repositories\" />
+  </ItemGroup>
 </Project>
