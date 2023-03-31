@@ -20,13 +20,13 @@ namespace orders_api.ApplicationServices
 
 		public async Task HandleCommand(CreateOrderCommand createOrder)
 		{
-			var order = new Order(OrderId.create(createOrder.orderId));
-			order.SetAddress(OrderAddress.Create(createOrder.Address));
+			var order = new Order();
+            order.SetAddress(OrderAddress.Create(createOrder.Address));
 
-			await this.repository.AddOrder(order); 
+            await this.repository.InsertAsync(order); 
 		}
 
-		public async Task<Order> GetOrder(Guid id)
+		public async Task<Order?> GetOrder(Guid id)
 		{
 			return await this.orderQueries.GetOrderIdAsync(id);
 		}

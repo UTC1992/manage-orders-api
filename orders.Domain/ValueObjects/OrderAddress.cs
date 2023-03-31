@@ -1,7 +1,7 @@
 ﻿using System;
 namespace orders.Domain.ValueObjects
 {
-	public record OrderAddress
+	public record class OrderAddress
 	{
 		public string Value { get; init; }
 

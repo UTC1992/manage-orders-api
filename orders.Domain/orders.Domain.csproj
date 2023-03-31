@@ -10,10 +10,14 @@
     <None Remove="Entities\" />
     <None Remove="ValueObjects\" />
     <None Remove="Repositories\" />
+    <None Remove="SeeWork\" />
+    <None Remove="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
     <Folder Include="ValueObjects\" />
     <Folder Include="Repositories\" />
+    <Folder Include="Seedwork\" />
+    <Folder Include="Interfaces\" />
   </ItemGroup>
 </Project>

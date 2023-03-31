@@ -3,20 +3,20 @@ using orders.Domain.ValueObjects;
 
 namespace orders.Domain.Entities
 {
-	public class Order
-	{
-		public Guid Id { get; init; }
-		public OrderAddress Address { get; private set; }
+  public class Order : Entity
+  {
+    public OrderAddress Address { get; private set; }
+    public virtual ICollection<OrderProduct> OrderProducts { get; private set; }
 
-		public Order(Guid id)
-		{
-			this.Id = id;
-		}
+    public Order()
+    {
+      this.OrderProducts = new List<OrderProduct>();
+    }
 
-		public void SetAddress(OrderAddress address)
-		{
-			Address = address;
-		}
-	}
+    public void SetAddress(OrderAddress address)
+    {
+      Address = address;
+    }
+  }
 }
 

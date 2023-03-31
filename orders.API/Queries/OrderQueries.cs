@@ -14,10 +14,9 @@ namespace orders_api.Queries
             this.orderRepository = orderRepository;
         }
 
-        public async Task<Order> GetOrderIdAsync(Guid id)
+        public async Task<Order?> GetOrderIdAsync(Guid id)
         {
-            var response = await this.orderRepository.GetOrdersById(OrderId.create(id));
-            return response;
+            return await this.orderRepository.GetByIdAsync(EntityId.create(id));
         }
 	}
 }

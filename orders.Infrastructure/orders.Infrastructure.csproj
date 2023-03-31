@@ -8,20 +8,22 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.4">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\orders.Domain\orders.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Context\" />
-    <None Remove="Context\Entities\" />
     <None Remove="Repositories\" />
-    <None Remove="Interfaces\" />
+    <None Remove="Context\Configurations\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Context\" />
-    <Folder Include="Context\Entities\" />
     <Folder Include="Repositories\" />
-    <Folder Include="Interfaces\" />
+    <Folder Include="Context\Configutations\" />
   </ItemGroup>
 </Project>
