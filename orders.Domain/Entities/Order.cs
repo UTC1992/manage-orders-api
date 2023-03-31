@@ -3,7 +3,7 @@ using orders.Domain.ValueObjects;
 
 namespace orders.Domain.Entities
 {
-  public class Order : Entity
+  public class Order : BaseEntity
   {
     public OrderAddress Address { get; private set; }
     public virtual ICollection<OrderProduct> OrderProducts { get; private set; }

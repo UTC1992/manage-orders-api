@@ -3,11 +3,11 @@ using orders.Domain.Interfaces;
 
 namespace orders.Domain.Entities
 {
-  public abstract class Entity : IEntity
+  public abstract class BaseEntity : IBaseEntity
   {
     public Guid Id { get; init; }
 
-    protected Entity()
+    protected BaseEntity()
     {
       this.Id = Guid.NewGuid();
     }

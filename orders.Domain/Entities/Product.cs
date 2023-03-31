@@ -3,7 +3,7 @@ using orders.Domain.ValueObjects;
 
 namespace orders.Domain.Entities
 {
-  public class Product : Entity
+  public class Product : BaseEntity
   {
     public ProductName Name { get; private set; }
     public ProductPrice Price { get; private set; }

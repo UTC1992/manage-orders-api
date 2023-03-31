@@ -1,7 +1,7 @@
 ﻿using System;
 namespace orders.Domain.Interfaces
 {
-	public interface IEntity
+	public interface IBaseEntity
 	{
 		public Guid Id { get; init; }
 	}
