@@ -7,7 +7,7 @@ namespace orders.Domain.Entities
   {
     public ProductName Name { get; private set; }
     public ProductPrice Price { get; private set; }
-    public virtual ICollection<OrderProduct> OrderProducts { get; private set; }
+    public virtual ICollection<OrderDetail> OrderDetails { get; private set; }
 
     public Product()
     {

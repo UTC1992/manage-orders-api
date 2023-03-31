@@ -4,16 +4,17 @@ using orders.Domain.Entities;
 
 namespace orders.Infrastructure
 {
-    internal class OrderProductEntityTypeConfiguration : IEntityTypeConfiguration<OrderProduct>
+    internal class OrderProductEntityTypeConfiguration : IEntityTypeConfiguration<OrderDetail>
     {
-        public void Configure(EntityTypeBuilder<OrderProduct> builder)
+        public void Configure(EntityTypeBuilder<OrderDetail> builder)
         {
+            builder.ToTable("OrderDetails");
             builder.HasKey(op => new { op.OrderId, op.ProductId });
             builder.HasOne(op => op.Order)
-                .WithMany(op => op.OrderProducts)
+                .WithMany(op => op.OrderDetails)
                 .HasForeignKey(op => op.OrderId);
             builder.HasOne(op => op.Product)
-                .WithMany(op => op.OrderProducts)
+                .WithMany(op => op.OrderDetails)
                 .HasForeignKey(op => op.ProductId);
         }
     }

@@ -1,7 +1,7 @@
 ﻿using System;
 namespace orders.Domain.Entities
 {
-	public class OrderProduct: BaseEntity
+	public class OrderDetail
 	{
 		public Guid OrderId { get; private set; }
 		public Order Order { get; private set; }
