@@ -2,38 +2,36 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using orders_api.ApplicationServices;
-using orders_api.Commands;
+using orders.API.Commands;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
-namespace orders_api.Controllers
+namespace orders.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class OrderController : ControllerBase
     {
-        private readonly OrderServices orderServices;
+        private readonly IMediator _mediator;
 
-        public OrderController(OrderServices orderServices)
+        public OrderController(IMediator mediator)
         {
-            this.orderServices = orderServices;
+            this._mediator = mediator;
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddOrder(CreateOrderCommand createOrderCommand)
+        public async Task<IActionResult> AddOrder(CreateOrderCommand command)
         {
-            await this.orderServices.HandleCommand(createOrderCommand);
-            return Ok(createOrderCommand);
+            var order = await this._mediator.Send(command);
+            return Ok(order);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult>GetOrder(Guid id)
-        {
-            var response = await this.orderServices.GetOrder(id);
-            return Ok(response);
-        }
+        //[HttpGet("{id}")]
+        //public async Task<IActionResult>GetOrder(Guid id)
+        //{
+        //    var response = await this.orderServices.GetOrder(id);
+        //    return Ok(response);
+        //}
     }
 }
 

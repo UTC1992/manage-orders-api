@@ -8,7 +8,7 @@ namespace orders.Domain.Interfaces
     {
         Task<IEnumerable<T>> GetAllAsync();
         Task<T?> GetByIdAsync(EntityId id);
-        Task<bool> InsertAsync(T entity);
+        Task<T> InsertAsync(T entity);
         Task<bool> UpdateAsync(T entity);
         Task<bool> DeleteAsync(T entity);
     }

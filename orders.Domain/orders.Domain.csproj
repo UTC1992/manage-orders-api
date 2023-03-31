@@ -17,7 +17,6 @@
     <Folder Include="Entities\" />
     <Folder Include="ValueObjects\" />
     <Folder Include="Repositories\" />
-    <Folder Include="Seedwork\" />
     <Folder Include="Interfaces\" />
   </ItemGroup>
 </Project>

@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using orders.Domain.Repositories;
 using orders.Infrastructure;
-using orders_api.ApplicationServices;
-using orders_api.Queries;
+using orders.API.Queries;
+using MediatR;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// mediator to CQRS pattern
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
 // Add context
 builder.Services.AddDbContext<DatabaseContext>(options =>
 {
@@ -21,12 +25,6 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
 
 // Add Repositories
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
-
-// Add Queries
-builder.Services.AddScoped<OrderQueries>();
-
-// Add Services to Api
-builder.Services.AddScoped<OrderServices>();
 
 var app = builder.Build();
 

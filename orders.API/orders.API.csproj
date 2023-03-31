@@ -21,17 +21,20 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="MediatR" Version="12.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Commands\" />
-    <None Remove="ApplicationServices\" />
     <None Remove="Queries\" />
+    <None Remove="DTOs\" />
+    <None Remove="Handlers\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Commands\" />
-    <Folder Include="ApplicationServices\" />
     <Folder Include="Queries\" />
+    <Folder Include="DTOs\" />
+    <Folder Include="Handlers\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\orders.Infrastructure\orders.Infrastructure.csproj">

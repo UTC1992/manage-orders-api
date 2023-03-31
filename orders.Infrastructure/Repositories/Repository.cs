@@ -27,7 +27,7 @@ namespace orders.Infrastructure.Repositories
             return await _entity.AsNoTracking().SingleOrDefaultAsync(s => s.Id == (Guid)id);
         }
 
-        public async Task<bool> InsertAsync(T entity)
+        public async Task<T> InsertAsync(T entity)
         {
             if (entity is null)
                 throw new ArgumentNullException(nameof(entity));
@@ -35,7 +35,7 @@ namespace orders.Infrastructure.Repositories
             await _entity.AddAsync(entity);
             await _context.SaveChangesAsync();
 
-            return true;
+            return entity;
         }
 
         public async Task<bool> UpdateAsync(T entity)

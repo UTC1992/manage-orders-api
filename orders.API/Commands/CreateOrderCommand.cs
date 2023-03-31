@@ -1,6 +1,9 @@
 ﻿using System;
-namespace orders_api.Commands
+using MediatR;
+using orders.API.DTOs;
+
+namespace orders.API.Commands
 {
-	public record CreateOrderCommand(string Address);  
+	public record CreateOrderCommand(string Address, IEnumerable<ProductDto> Products) : IRequest<OrderDto>;
 }
 
