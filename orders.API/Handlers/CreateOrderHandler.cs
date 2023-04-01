@@ -23,7 +23,7 @@ namespace orders.API.Handlers
         {
             var order = new Order();
             order.SetAddress(OrderAddress.Create(request.Address));
-            await this._repository.InsertAsync(order);
+            await this._repository.InsertAsync(order, request.ProductsId);
 
             return new OrderDto
             {

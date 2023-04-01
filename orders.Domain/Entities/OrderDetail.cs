@@ -7,6 +7,16 @@ namespace orders.Domain.Entities
 		public Order Order { get; private set; }
 		public Guid ProductId { get; private set; }
 		public Product Product { get; private set; }
-	}
+
+		public void SetOrderId(Guid Id)
+		{
+			this.OrderId = Id;
+		}
+
+        public void SetProductId(Guid productId)
+        {
+            this.ProductId = productId;
+        }
+    }
 }
 

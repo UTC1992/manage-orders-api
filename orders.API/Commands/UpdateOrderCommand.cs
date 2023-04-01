@@ -5,6 +5,10 @@ using orders.Domain.Entities;
 
 namespace orders.API.Commands
 {
-	public record UpdateOrderCommand(string Address, IEnumerable<ProductDto> Products) : IRequest<OrderDto>;
+    public record UpdateOrderCommand(
+        Guid Id,
+        string Address,
+        IEnumerable<Guid> ProductsId
+    ) : IRequest<bool>;
 }
 

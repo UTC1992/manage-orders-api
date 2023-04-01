@@ -7,7 +7,8 @@ namespace orders.Domain.Repositories
 {
     public interface IOrderRepository : IRepository<Order>
     {
-
+        Task<bool> InsertAsync(Order order, IEnumerable<Guid> productsId);
+        Task<bool> UpdateAsync(Order order, IEnumerable<Guid> productsId);
     }
 }
 

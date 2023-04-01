@@ -49,10 +49,11 @@ namespace orders.Infrastructure.Repositories
             return true;
         }
 
-        public async Task<bool> DeleteAsync(T entity)
+        public async Task<bool> DeleteAsync(Guid Id)
         {
+            var entity = await _entity.FindAsync(Id);
             if (entity is null)
-                throw new ArgumentNullException(nameof(entity));
+                return false;
 
             _entity.Remove(entity);
             await _context.SaveChangesAsync();

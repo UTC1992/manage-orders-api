@@ -10,7 +10,7 @@ namespace orders.Domain.Interfaces
         Task<T?> GetByIdAsync(EntityId id);
         Task<T> InsertAsync(T entity);
         Task<bool> UpdateAsync(T entity);
-        Task<bool> DeleteAsync(T entity);
+        Task<bool> DeleteAsync(Guid Id);
     }
 }
 

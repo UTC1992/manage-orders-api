@@ -26,6 +26,30 @@ namespace orders.API.Controllers
             return Ok(order);
         }
 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateOrder(Guid id, UpdateOrderCommand command)
+        {
+            if (id != command.Id)
+            {
+                return BadRequest();
+            }
+
+            var response = await this._mediator.Send(command);
+            if(!response)
+            {
+                return NotFound();
+            }
+
+            return Ok(true);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteOrder(Guid id)
+        {
+            await this._mediator.Send(new DeleteOrderCommand(id));
+            return NoContent();
+        }
+
         //[HttpGet("{id}")]
         //public async Task<IActionResult>GetOrder(Guid id)
         //{
