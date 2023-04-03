@@ -32,6 +32,17 @@ namespace orders.Infrastructure.Repositories
             await _context.SaveChangesAsync();
             return true;
         }
+
+        public async Task<T> InsertAsync(T entity)
+        {
+            if (entity is null)
+                throw new ArgumentNullException(nameof(entity));
+
+            await _entity.AddAsync(entity);
+            await _context.SaveChangesAsync();
+
+            return entity;
+        }
     }
 }
 

@@ -8,6 +8,7 @@ namespace orders.Domain.Interfaces
     {
         Task<IEnumerable<T>> GetAllAsync();
         Task<bool> DeleteAsync(Guid Id);
+        Task<T> InsertAsync(T entity);
     }
 }
 

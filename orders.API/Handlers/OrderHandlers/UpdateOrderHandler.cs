@@ -5,7 +5,7 @@ using orders.Domain.Entities;
 using orders.Domain.Repositories;
 using orders.Domain.ValueObjects;
 
-namespace orders.API.Handlers
+namespace orders.API.Handlers.OrderHandlers
 {
 	public class UpdateOrderHandler : IRequestHandler<UpdateOrderCommand, bool>
 	{

@@ -3,26 +3,26 @@ using orders.Domain.ValueObjects;
 
 namespace orders.Domain.Entities
 {
-  public class Product : BaseEntity
-  {
-    public ProductName Name { get; private set; }
-    public ProductPrice Price { get; private set; }
-    public virtual ICollection<OrderDetail> OrderDetails { get; private set; }
-
-    public Product()
+    public class Product : BaseEntity
     {
+        public ProductName Name { get; private set; }
+        public ProductPrice Price { get; private set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; private set; }
 
-    }
+        public Product()
+        {
+            this.OrderDetails = new List<OrderDetail>();
+        }
 
-    public void SetName(ProductName name)
-    {
-      this.Name = name;
-    }
+        public void SetName(ProductName name)
+        {
+            this.Name = name;
+        }
 
-    public void SetPrice(ProductPrice price)
-    {
-      this.Price = price;
+        public void SetPrice(ProductPrice price)
+        {
+            this.Price = price;
+        }
     }
-  }
 }
 

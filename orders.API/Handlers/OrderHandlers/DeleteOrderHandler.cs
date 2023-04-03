@@ -4,7 +4,7 @@ using orders.API.Commands;
 using orders.Domain.Entities;
 using orders.Domain.Repositories;
 
-namespace orders.API.Handlers
+namespace orders.API.Handlers.OrderHandlers
 {
 	public class DeleteOrderHandler : IRequestHandler<DeleteOrderCommand, bool>
 	{

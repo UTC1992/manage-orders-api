@@ -1,5 +1,5 @@
 ﻿using System;
-namespace orders.API.Handlers
+namespace orders.API.Handlers.OrderHandlers
 {
 	public class GetAllOrdersHandler
 	{

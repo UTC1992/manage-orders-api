@@ -1,26 +1,26 @@
 ﻿using System;
 using MediatR;
 using orders.API.DTOs;
-using orders.API.Queries;
+using orders.API.Queries.Product;
 using orders.Domain.Repositories;
 
-namespace orders.API.Handlers
+namespace orders.API.Handlers.ProductHandlers
 {
-	public class GetProductsByOrderIdHandler : IRequestHandler<GetProductsByOrderIdQuery, IEnumerable<ProductDto>>
-    {
+	public class GetAllProductsHandler : IRequestHandler<GetAllProductsQuery, IEnumerable<ProductDto>>
+	{
         private readonly IProductRepository _repository;
 
-        public GetProductsByOrderIdHandler(IProductRepository repository)
+        public GetAllProductsHandler(IProductRepository repository)
         {
             this._repository = repository;
         }
 
-        public async Task<IEnumerable<ProductDto>> Handle(GetProductsByOrderIdQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<ProductDto>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
-            var result = await this._repository.GetProductsByOrderIdAsync(request.OrderId);
-
+            var resultProducts = await this._repository.GetAllAsync();
             var products = new List<ProductDto>();
-            foreach(var product in result)
+
+            foreach( var product in resultProducts)
             {
                 var item = new ProductDto
                 {
@@ -28,6 +28,7 @@ namespace orders.API.Handlers
                     Name = product.Name.Value,
                     Price = product.Price.Value,
                 };
+
                 products.Add(item);
             }
 

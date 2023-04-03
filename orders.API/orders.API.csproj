@@ -29,12 +29,20 @@
     <None Remove="Queries\" />
     <None Remove="DTOs\" />
     <None Remove="Handlers\" />
+    <None Remove="Queries\Order\" />
+    <None Remove="Queries\Product\" />
+    <None Remove="Commands\Order\" />
+    <None Remove="Commands\Product\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Commands\" />
     <Folder Include="Queries\" />
     <Folder Include="DTOs\" />
     <Folder Include="Handlers\" />
+    <Folder Include="Queries\Order\" />
+    <Folder Include="Queries\Product\" />
+    <Folder Include="Commands\Order\" />
+    <Folder Include="Commands\Product\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\orders.Infrastructure\orders.Infrastructure.csproj">
