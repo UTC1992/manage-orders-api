@@ -22,33 +22,6 @@ namespace orders.Infrastructure.Repositories
             return await _entity.AsNoTracking().ToListAsync();
         }
 
-        public async Task<T?> GetByIdAsync(EntityId id)
-        {
-            return await _entity.AsNoTracking().SingleOrDefaultAsync(s => s.Id == (Guid)id);
-        }
-
-        public async Task<T> InsertAsync(T entity)
-        {
-            if (entity is null)
-                throw new ArgumentNullException(nameof(entity));
-
-            await _entity.AddAsync(entity);
-            await _context.SaveChangesAsync();
-
-            return entity;
-        }
-
-        public async Task<bool> UpdateAsync(T entity)
-        {
-            if (entity is null)
-                throw new ArgumentNullException(nameof(entity));
-
-            _entity.Update(entity);
-            await _context.SaveChangesAsync();
-
-            return true;
-        }
-
         public async Task<bool> DeleteAsync(Guid Id)
         {
             var entity = await _entity.FindAsync(Id);

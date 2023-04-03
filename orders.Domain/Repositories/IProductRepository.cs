@@ -6,6 +6,6 @@ namespace orders.Domain.Repositories
 {
 	public interface IProductRepository : IRepository<Product>
 	{
-	}
+    }
 }
 

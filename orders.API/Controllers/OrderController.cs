@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using orders.API.Commands;
+using orders.API.Queries;
 
 namespace orders.API.Controllers
 {
@@ -50,12 +51,13 @@ namespace orders.API.Controllers
             return NoContent();
         }
 
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult>GetOrder(Guid id)
-        //{
-        //    var response = await this.orderServices.GetOrder(id);
-        //    return Ok(response);
-        //}
+        [HttpGet("products/{id}")]
+        public async Task<IActionResult> GetProductsByOrderId(Guid id)
+        {
+            var query = new GetProductsByOrderIdQuery(id);
+            var products = await this._mediator.Send(query);
+            return Ok(products);
+        }
     }
 }
 

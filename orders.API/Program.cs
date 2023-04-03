@@ -4,6 +4,7 @@ using orders.Infrastructure;
 using orders.API.Queries;
 using MediatR;
 using System.Reflection;
+using orders.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +26,7 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
 
 // Add Repositories
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 var app = builder.Build();
 
