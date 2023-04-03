@@ -20,7 +20,7 @@ namespace orders.Infrastructure
         {
             modelBuilder.ApplyConfiguration(new OrderEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new ProductEntityTypeConfiguration());
-            modelBuilder.ApplyConfiguration(new OrderProductEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new OrderDetailEntityTypeConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

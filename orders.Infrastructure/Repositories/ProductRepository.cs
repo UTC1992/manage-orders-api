@@ -20,8 +20,8 @@ namespace orders.Infrastructure.Repositories
                 return Enumerable.Empty<Product>().ToList();
 
             var products = this._context.OrderDetails
-                .Where(o => o.OrderId == OrderId)
-                .Select(x => x.Product).ToList();
+                .Where(od => od.OrderId == OrderId)
+                .Select(od => od.Product).ToList();
 
             return products;
         }

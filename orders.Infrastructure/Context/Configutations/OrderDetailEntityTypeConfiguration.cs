@@ -4,7 +4,7 @@ using orders.Domain.Entities;
 
 namespace orders.Infrastructure
 {
-    internal class OrderProductEntityTypeConfiguration : IEntityTypeConfiguration<OrderDetail>
+    internal class OrderDetailEntityTypeConfiguration : IEntityTypeConfiguration<OrderDetail>
     {
         public void Configure(EntityTypeBuilder<OrderDetail> builder)
         {

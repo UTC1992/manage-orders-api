@@ -17,6 +17,19 @@ namespace orders.Infrastructure
             this._context = dbContext;
         }
 
+        public async Task<IEnumerable<OrderDetail>> GetOrdersByProductIdAsync(Guid ProductId)
+        {
+            var entity = await this._context.Products.FindAsync(ProductId);
+            if (entity is null)
+                return Enumerable.Empty<OrderDetail>().ToList();
+
+            var orders = (from od in this._context.OrderDetails
+                           where od.ProductId == ProductId
+                           select od).ToList();
+
+            return orders;
+        }
+
         public async Task<Order> InsertAsync(
             Order order, IEnumerable<Guid> productsId)
         {

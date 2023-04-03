@@ -20,6 +20,22 @@ namespace orders.API.Controllers
             this._mediator = mediator;
         }
 
+        [HttpGet("{id}/products")]
+        public async Task<IActionResult> GetProductsByOrderId(Guid id)
+        {
+            var query = new GetProductsByOrderIdQuery(id);
+            var products = await this._mediator.Send(query);
+            return Ok(products);
+        }
+
+        [HttpGet("products/{id}")]
+        public async Task<IActionResult> GetOrdersByProductId(Guid id)
+        {
+            var query = new GetOrdersByProductIdQuery(id);
+            var orders = await this._mediator.Send(query);
+            return Ok(orders);
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddOrder(CreateOrderCommand command)
         {
@@ -49,14 +65,6 @@ namespace orders.API.Controllers
         {
             await this._mediator.Send(new DeleteOrderCommand(id));
             return NoContent();
-        }
-
-        [HttpGet("{id}/products")]
-        public async Task<IActionResult> GetProductsByOrderId(Guid id)
-        {
-            var query = new GetProductsByOrderIdQuery(id);
-            var products = await this._mediator.Send(query);
-            return Ok(products);
         }
 
     }

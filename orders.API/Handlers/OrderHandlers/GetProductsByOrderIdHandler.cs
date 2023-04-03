@@ -6,7 +6,8 @@ using orders.Domain.Repositories;
 
 namespace orders.API.Handlers.OrderHandlers
 {
-	public class GetProductsByOrderIdHandler : IRequestHandler<GetProductsByOrderIdQuery, IEnumerable<ProductDto>>
+	public class GetProductsByOrderIdHandler
+        : IRequestHandler<GetProductsByOrderIdQuery, IEnumerable<ProductDto>>
     {
         private readonly IProductRepository _repository;
 
