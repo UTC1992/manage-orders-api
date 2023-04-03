@@ -28,7 +28,7 @@ namespace orders.API.Controllers
             return Ok(products);
         }
 
-        [HttpGet("product/{id}/{limit}/{offset}")]
+        [HttpGet("Product/{id}/orders/{limit}/{offset}")]
         public async Task<IActionResult> GetOrdersByProductId(Guid id, int limit, int offset)
         {
             var query = new GetOrdersByProductIdQuery(id, limit, offset);
