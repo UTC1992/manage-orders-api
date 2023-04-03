@@ -28,10 +28,10 @@ namespace orders.API.Controllers
             return Ok(products);
         }
 
-        [HttpGet("products/{id}")]
-        public async Task<IActionResult> GetOrdersByProductId(Guid id)
+        [HttpGet("product/{id}/{limit}/{offset}")]
+        public async Task<IActionResult> GetOrdersByProductId(Guid id, int limit, int offset)
         {
-            var query = new GetOrdersByProductIdQuery(id);
+            var query = new GetOrdersByProductIdQuery(id, limit, offset);
             var orders = await this._mediator.Send(query);
             return Ok(orders);
         }

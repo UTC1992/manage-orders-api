@@ -17,6 +17,16 @@ namespace orders.Domain.Entities
         {
             this.ProductId = productId;
         }
+
+		public void SeProduct(Product product)
+		{
+			this.Product = product;
+		}
+
+		public void SetOrder(Order order)
+		{
+			this.Order = order;
+		}
     }
 }
 

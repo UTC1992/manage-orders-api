@@ -7,6 +7,6 @@ using orders.Domain.ValueObjects;
 
 namespace orders.API.Queries
 {
-	public record GetOrdersByProductIdQuery(Guid ProductId) : IRequest<IEnumerable<OrderDto>>;
+	public record GetOrdersByProductIdQuery(Guid ProductId, int limit, int offset) : IRequest<IEnumerable<OrderDto>>;
 }
 

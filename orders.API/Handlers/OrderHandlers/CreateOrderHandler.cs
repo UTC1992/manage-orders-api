@@ -28,8 +28,7 @@ namespace orders.API.Handlers.OrderHandlers
             return new OrderDto
             {
                 Id = orderSaved.Id,
-                Address = orderSaved.Address.Value,
-                ProductsId = orderSaved.OrderDetails.Select(od => od.ProductId).ToList(),
+                Address = orderSaved.Address.Value
             };
         }
 

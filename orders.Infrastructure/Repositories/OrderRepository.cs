@@ -17,15 +17,18 @@ namespace orders.Infrastructure
             this._context = dbContext;
         }
 
-        public async Task<IEnumerable<OrderDetail>> GetOrdersByProductIdAsync(Guid ProductId)
+        public async Task<IEnumerable<Order>> GetOrdersByProductIdAsync(Guid ProductId, int limit, int offset)
         {
             var entity = await this._context.Products.FindAsync(ProductId);
             if (entity is null)
-                return Enumerable.Empty<OrderDetail>().ToList();
+                return Enumerable.Empty<Order>().ToList();
 
-            var orders = (from od in this._context.OrderDetails
-                           where od.ProductId == ProductId
-                           select od).ToList();
+            var orders = this._context.OrderDetails
+                .Where(od => od.ProductId == ProductId)
+                .Select(od => od.Order)
+                .Skip(offset)
+                .Take(limit)
+                .ToList();
 
             return orders;
         }
@@ -67,9 +70,9 @@ namespace orders.Infrastructure
                 throw new ArgumentNullException(nameof(order));
 
 
-            var orderDetailsToDelete = (from od in this._context.OrderDetails
-                                        where od.OrderId == order.Id
-                                        select od).ToList<OrderDetail>();
+            var orderDetailsToDelete = this._context.OrderDetails
+                .Where(od => od.OrderId == order.Id)
+                .Select(od => od).ToList();
 
             if (orderDetailsToDelete.Count > 0)
             {

@@ -9,7 +9,7 @@ namespace orders.Domain.Repositories
     {
         Task<Order> InsertAsync(Order order, IEnumerable<Guid> productsId);
         Task<bool> UpdateAsync(Order order, IEnumerable<Guid> productsId);
-        Task<IEnumerable<OrderDetail>> GetOrdersByProductIdAsync(Guid ProductId);
+        Task<IEnumerable<Order>> GetOrdersByProductIdAsync(Guid ProductId, int limit, int offset);
     }
 }
 
