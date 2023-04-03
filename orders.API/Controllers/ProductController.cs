@@ -21,12 +21,6 @@ namespace orders.API.Controllers
             this._mediator = mediator;
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetProductsByOrderId(Guid id, GetProductsByOrderIdQuery query)
-        {
-            var products = await this._mediator.Send(query);
-            return Ok(products);
-        }
     }
 }
 

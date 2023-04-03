@@ -76,23 +76,6 @@ namespace orders.Infrastructure
 
             return true;
         }
-
-        public async Task<IEnumerable<Product>> GetProductsByOrderIdAsync(Guid OrderId)
-        {
-            //var productsByOrderId = (from orderDetail in this._context.OrderDetails
-            //                         join product in this._context.Products on orderDetail.ProductId equals product.Id
-            //                         where orderDetail.OrderId == OrderId
-            //                         select orderDetail.Product).ToList<Product>();
-            var entity = await this._context.Orders.FindAsync(OrderId);
-            if (entity is null)
-                return Enumerable.Empty<Product>().ToList();
-
-            var products = this._context.OrderDetails
-                .Where(o => o.OrderId == OrderId)
-                .Select(x => x.Product).ToList();
-
-            return products;
-        }
     }
 }
 

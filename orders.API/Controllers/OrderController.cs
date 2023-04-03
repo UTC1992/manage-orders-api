@@ -58,6 +58,7 @@ namespace orders.API.Controllers
             var products = await this._mediator.Send(query);
             return Ok(products);
         }
+
     }
 }
 

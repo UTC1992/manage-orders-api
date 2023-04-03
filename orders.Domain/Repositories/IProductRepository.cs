@@ -6,6 +6,7 @@ namespace orders.Domain.Repositories
 {
 	public interface IProductRepository : IRepository<Product>
 	{
+        Task<IEnumerable<Product>> GetProductsByOrderIdAsync(Guid OrderId);
     }
 }
 
