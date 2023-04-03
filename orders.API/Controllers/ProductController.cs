@@ -15,26 +15,50 @@ namespace orders.API.Controllers
     [Route("api/[controller]")]
     public class ProductController : Controller
     {
-
         private readonly IMediator _mediator;
+        private readonly ILogger<ProductController> _logger;
 
-        public ProductController(IMediator mediator)
+        public ProductController(IMediator mediator, ILogger<ProductController> logger)
         {
             this._mediator = mediator;
+            this._logger = logger;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllProducts()
         {
-            var products = await this._mediator.Send(new GetAllProductsQuery());
-            return Ok(products);
+            try
+            {
+                var products = await this._mediator.Send(new GetAllProductsQuery());
+                return Ok(products);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while getting all products.");
+
+                return StatusCode(
+                    StatusCodes.Status500InternalServerError,
+                    "An error occurred while getting all products. Please try again later.");
+            }
         }
 
         [HttpPost]
         public async Task<IActionResult> AddProduct(CreateProductCommand command)
         {
-            var product = await this._mediator.Send(command);
-            return Ok(product);
+            try
+            {
+                var product = await this._mediator.Send(command);
+                return Ok(product);
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while adding product.");
+
+                return StatusCode(
+                    StatusCodes.Status500InternalServerError,
+                    "An error occurred while adding product. Please try again later.");
+            }
         }
 
     }
