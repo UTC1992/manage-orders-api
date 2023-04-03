@@ -51,7 +51,7 @@ namespace orders.API.Controllers
             return NoContent();
         }
 
-        [HttpGet("products/{id}")]
+        [HttpGet("{id}/products")]
         public async Task<IActionResult> GetProductsByOrderId(Guid id)
         {
             var query = new GetProductsByOrderIdQuery(id);
