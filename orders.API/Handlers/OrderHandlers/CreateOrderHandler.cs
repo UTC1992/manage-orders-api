@@ -23,11 +23,13 @@ namespace orders.API.Handlers.OrderHandlers
         {
             var order = new Order();
             order.SetAddress(OrderAddress.Create(request.Address));
-            await this._repository.InsertAsync(order, request.ProductsId);
+
+            var orderSaved = await this._repository.InsertAsync(order, request.ProductsId);
             return new OrderDto
             {
-                Id = order.Id,
-                Address = order.Address.Value,
+                Id = orderSaved.Id,
+                Address = orderSaved.Address.Value,
+                ProductsId = orderSaved.OrderDetails.Select(od => od.ProductId).ToList(),
             };
         }
 

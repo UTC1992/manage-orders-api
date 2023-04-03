@@ -17,7 +17,7 @@ namespace orders.Infrastructure
             this._context = dbContext;
         }
 
-        public async Task<bool> InsertAsync(
+        public async Task<Order> InsertAsync(
             Order order, IEnumerable<Guid> productsId)
         {
             if (order is null)
@@ -26,20 +26,24 @@ namespace orders.Infrastructure
             await this._context.Orders.AddAsync(order);
             await this._context.SaveChangesAsync();
 
-            var orderDetailList = new List<OrderDetail>();
+            var orderWithDetails = this._context.Orders
+                .Include(o => o.OrderDetails)
+                .Where(x => x.Id == order.Id)
+                .First();
+
             foreach (Guid id in productsId)
             {
                 var orderDetail = new OrderDetail();
                 orderDetail.SetOrderId(order.Id);
                 orderDetail.SetProductId(id);
 
-                orderDetailList.Add(orderDetail);
+                orderWithDetails.OrderDetails.Add(orderDetail);
+                
             }
 
-            await this._context.OrderDetails.AddRangeAsync(orderDetailList);
             await this._context.SaveChangesAsync();
 
-            return true;
+            return orderWithDetails;
         }
 
         public async Task<bool> UpdateAsync(

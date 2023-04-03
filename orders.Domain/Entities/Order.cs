@@ -17,6 +17,11 @@ namespace orders.Domain.Entities
         {
             Address = address;
         }
+
+        public void SetOrderDetails(OrderDetail orderDetail)
+        {
+            this.OrderDetails.Add(orderDetail);
+        }
     }
 }
 
