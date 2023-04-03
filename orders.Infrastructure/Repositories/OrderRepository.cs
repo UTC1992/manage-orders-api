@@ -62,7 +62,7 @@ namespace orders.Infrastructure
             return orderWithDetails;
         }
 
-        public async Task<bool> UpdateAsync(
+        public async Task<Order> UpdateAsync(
             Order order,
             IEnumerable<Guid> productsId )
         {
@@ -88,13 +88,14 @@ namespace orders.Infrastructure
                 orderDetail.SetProductId(id);
 
                 orderDetailToSave.Add(orderDetail);
+                order.SetOrderDetails(orderDetail);
             }
 
             this._context.Orders.Update(order);
             await this._context.OrderDetails.AddRangeAsync(orderDetailToSave);
             await this._context.SaveChangesAsync();
 
-            return true;
+            return order;
         }
     }
 }

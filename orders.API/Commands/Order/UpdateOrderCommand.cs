@@ -9,6 +9,6 @@ namespace orders.API.Commands
         Guid Id,
         string Address,
         IEnumerable<Guid> ProductsId
-    ) : IRequest<bool>;
+    ) : IRequest<OrderDto>;
 }
 

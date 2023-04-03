@@ -52,12 +52,7 @@ namespace orders.API.Controllers
             }
 
             var response = await this._mediator.Send(command);
-            if(!response)
-            {
-                return NotFound();
-            }
-
-            return Ok(true);
+            return Ok(response);
         }
 
         [HttpDelete("{id}")]
