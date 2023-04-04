@@ -5,6 +5,11 @@ using orders.API.Queries;
 using MediatR;
 using System.Reflection;
 using orders.Infrastructure.Repositories;
+using DotNetEnv;
+using System;
+
+// Load the environment variables from the .env file
+DotNetEnv.Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +26,7 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.Get
 // Add context
 builder.Services.AddDbContext<DatabaseContext>(options =>
 {
-  options.UseSqlServer(builder.Configuration.GetConnectionString("test"), b => b.MigrationsAssembly("orders.Infrastructure"));
+  options.UseSqlServer(Environment.GetEnvironmentVariable("DATABASE_URL"), b => b.MigrationsAssembly("orders.Infrastructure"));
 });
 
 // Add Repositories
