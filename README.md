@@ -2,8 +2,8 @@
 Api to manage orders
 
 # Pasos para arrancar
-* Ejecutar el script con formato sql que se encuentra en la carpeta Database
-* Configurar la conexion
+1. Ejecutar el script con formato sql que se encuentra en la carpeta Database
+2. Configurar la conexion
     * username: sa
     * password: (la pueden modificar en el archivo appsettings.json)
-* Arrancar en proyecto con: dotnet run o dotnet watch
+3. Arrancar en proyecto con: dotnet run o dotnet watch
